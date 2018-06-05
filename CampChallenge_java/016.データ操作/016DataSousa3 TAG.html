@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+            <title>GEEK-JOB-CAMP infomation-input-form</title>
+            <form action="./016DataSousa3 receive.jsp" method="post">
+                <p>
+                    <h1>情報入力ページ</h1>
+                </p>
+                <p>
+                    名前を入力してください
+                    <input type="text" name="name">
+                </p>
+                <p>
+                    性別はどちらですか？
+                    <input type="radio" name="gender" value="男">男
+                    <input type="radio" name="gender" value="女">女
+                </p> 
+                <p>
+                    <textarea name="special">
+                        特技を入力してください
+                    </textarea>
+                </p>
+                <p>
+                    <!–コースを選択させます –>
+                    <select name="course">
+                        <option name="course" value="A">転職コース</option>
+                        <option name="course" value="B">就職コース</option>
+                        <option name="course" value="C">在宅コース</option>
+                    </select>
+                </p>
+                <p>
+                    <input type="submit" name="btnSubmit" value="送信">
+                    <input type="reset" name="btnReset" value="リセット">
+                </p>
+            </form>
+    </body>
+</html>
