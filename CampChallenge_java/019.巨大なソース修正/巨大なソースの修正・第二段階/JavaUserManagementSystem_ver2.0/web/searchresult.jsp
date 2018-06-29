@@ -21,6 +21,9 @@
                 <th>登録日時</th>
             </tr>
             <tr>
+                
+                <!--ここで、名前と同じIDの番号をResultDetail.javaに飛ばしたい-->
+                <!--下のa hrefでどうしてResultDetail.javaに飛ばしているのかわからない-->
                 <td><a href="ResultDetail?id=<%= udd.getUserID()%>"><%= udd.getName()%></a></td>
                 <td><%= udd.getBirthday()%></td>
                 <td><%= udd.getType()%></td>

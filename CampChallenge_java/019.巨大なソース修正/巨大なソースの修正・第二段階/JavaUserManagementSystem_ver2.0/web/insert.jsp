@@ -2,7 +2,7 @@
         import="jums.JumsHelper"
         import="jums.UserDataBeans" %>
 <%
-    JumsHelper jh = JumsHelper.getInstance();
+    JumsHelper jh = JumsHelper.getInstance();  //  JumsHelper のインスタンス生成
     HttpSession hs = request.getSession();
     UserDataBeans udb = null;
     boolean reinput = false;

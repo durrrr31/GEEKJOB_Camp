@@ -1,3 +1,4 @@
+<%@page import="jums.UserDataBeans"%>
 <%@page import="jums.JumsHelper"
         import="jums.UserDataDTO" %>
 <%
@@ -25,5 +26,7 @@
         <form action="Delete" method="POST">
         <input type="submit" name="delete" value="削除"style="width:100px">
         </form>
+        <br>
+        <%=jh.home()%>
     </body>
 </html>

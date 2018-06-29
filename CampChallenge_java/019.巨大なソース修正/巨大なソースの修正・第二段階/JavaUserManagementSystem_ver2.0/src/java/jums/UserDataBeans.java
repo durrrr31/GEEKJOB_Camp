@@ -3,6 +3,7 @@ package jums;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 
 /**
  * ページで入出力されるユーザー情報を持ちまわるJavaBeans。DTOと違い画面表示系への結びつきが強い
@@ -17,6 +18,11 @@ public class UserDataBeans implements Serializable{
     private String tell;
     private int type ;
     private String comment;
+    //  Date型のbirthdayを追加します。
+    private Date birthday;
+    
+    //  int型のuserIDを追加します。
+    private int userID;
     
     public UserDataBeans(){
         this.name = "";
@@ -27,6 +33,16 @@ public class UserDataBeans implements Serializable{
         this.type = 0;
         this.comment= "";
     }
+    
+    //  userIDのゲッターセッターを追加します。
+    public int getUserID() {
+        return userID;
+    }
+    
+    public void setUserID(int userID){
+        this.userID = userID;
+    }
+    
     
     public String getName() {
         return name;
@@ -138,7 +154,9 @@ public class UserDataBeans implements Serializable{
     public void UD2DTOMapping(UserDataDTO udd){
         udd.setName(this.name);
         if(this.year != 0 || this.month != 0 || this.day != 0){
+            // カレンダークラスのインスタンス生成
             Calendar birthday = Calendar.getInstance();
+            
             if(this.month == 0 || this.day == 0){
                 birthday.set(this.year,0,1);
             }else{
@@ -151,6 +169,26 @@ public class UserDataBeans implements Serializable{
         udd.setTell(this.tell);
         udd.setType(this.type);
         udd.setComment(this.comment);
+        udd.setUserID(this.userID);
+    }
+    
+    //  Date型を引数にYearだけを返し、格納するメソッドを作成します。
+    public Integer getYearBirthday(Date birthday){
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(birthday);
+        return Integer.valueOf(cal.get(Calendar.YEAR));
+    }
+    
+    public Integer getMonthBirthday(Date birthday){
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(birthday);
+        return Integer.valueOf(cal.get(Calendar.MONTH));
+    }
+    
+    public Integer getDayBirthday(Date birthday){
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(birthday);
+        return Integer.valueOf(cal.get(Calendar.DAY_OF_MONTH));
     }
     
 }

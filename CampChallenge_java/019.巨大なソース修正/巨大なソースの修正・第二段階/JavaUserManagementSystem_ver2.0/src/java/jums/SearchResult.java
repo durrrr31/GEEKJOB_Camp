@@ -35,12 +35,16 @@ public class SearchResult extends HttpServlet {
             udb.setType(request.getParameter("type"));
 
             //DTOオブジェクトにマッピング。DB専用のパラメータに変換
-            UserDataDTO searchData = new UserDataDTO();
-            udb.UD2DTOMapping(searchData);
+            UserDataDTO searchData = new UserDataDTO();  //  searchData という名前で UserDataDTO（データベースのユーザー情報を持つBeansを作成）
+           
+            udb.UD2DTOMapping(searchData);    //  udb.UD2DTOMappingメソッドでsearchDataに先ほど格納した name year type をsetする
 
-            UserDataDTO resultData = UserDataDAO .getInstance().search(searchData);
-            request.setAttribute("resultData", resultData);
+            //  resultDataを作成し、searchメソッドを用いてsearchDataに入れた情報と合うものを検索しresultDataに格納する処理
+            UserDataDTO resultData = UserDataDAO.getInstance().search(searchData);
+           
+            request.setAttribute("resultData", resultData);    //   resultDataをセッションに格納
             
+            //  searchresult.jspに飛ばす処理
             request.getRequestDispatcher("/searchresult.jsp").forward(request, response);  
         }catch(Exception e){
             //何らかの理由で失敗したらエラーページにエラー文を渡して表示。想定は不正なアクセスとDBエラー
